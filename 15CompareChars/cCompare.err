@@ -1,0 +1,4 @@
+>>> Warning 216 "cCompare.c" Line 85(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+      Memory usage:   ROM=12%      RAM=5% - 10%
+      0 Errors,  1 Warnings.
+Build Successful.
