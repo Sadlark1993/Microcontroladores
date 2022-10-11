@@ -1,0 +1,52 @@
+[PROJECT]
+Target=Pisca.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.108dP-0427
+Compiler=PCM
+CCSVersion=5.015
+[Target Data]
+FileList=Pisca.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\01Pisca\Pisca]
+Type=4
+[mru-list]
+1=Pisca.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=22-07-2022
+D1_L=12
+D1_L1=[66765]Project Opened.
+D1_L2=[66794]Started Editing.
+D1_L3=[67099]Stopped Editing.
+D1_L4=[67104]Started Editing.
+D1_L5=[67440]Stopped Editing.
+D1_L6=[67621]Started Editing.
+D1_L7=[68077]Stopped Editing.
+TotalEdit=9
+TotalDebug=0
+D1_E=9
+D1_D=0
+D1_L8=[68077]Project Closed.
+D1_L9=[71993]Project Opened.
+D1_L10=[72007]Started Editing.
+D1_L11=[72317]Stopped Editing.
+D1_L12=[74560]Project Closed.
+
+[Opened Files]
+1=Pisca.c
+t1=1
+Count=1
+2=
+[Pisca.c]
+Type=4
+
+[defines]
+buildcount=7
+[Units]
+Count=1
+1=Pisca (main)

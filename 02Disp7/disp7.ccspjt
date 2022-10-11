@@ -1,0 +1,77 @@
+[PROJECT]
+Target=disp7.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.108dP-0427
+Compiler=PCM
+CCSVersion=5.108Pd
+[Target Data]
+FileList=disp7.c
+[Directories]
+Include=
+[C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\02Disp7\disp7]
+Type=4
+[mru-list]
+1=disp7.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=4
+D1=22-07-2022
+D1_L=19
+D1_L1=[74685]Project Opened.
+D1_L2=[74704]Started Editing.
+D1_L3=[75015]Stopped Editing.
+D1_L4=[75275]Started Editing.
+D1_L5=[75931]Stopped Editing.
+D1_L6=[75994]Started Editing.
+D1_L7=[76305]Stopped Editing.
+D1_L8=[78808]Started Editing.
+D1_L9=[79148]Stopped Editing.
+D1_L10=[81617]Started Editing.
+D1_L11=[82115]Stopped Editing.
+D1_L12=[82199]Started Editing.
+D1_L13=[82744]Stopped Editing.
+TotalEdit=86
+TotalDebug=0
+D1_E=15
+D1_D=0
+D1_L14=[82872]Project Closed.
+D1_L15=[82879]Project Opened.
+D1_L16=[82917]Started Editing.
+D1_L17=[83351]Stopped Editing.
+D1_L18=[83397]Started Editing.
+D1_L19=[83792]Stopped Editing.
+D2=23-07-2022
+D2_L=3
+D2_L1=[455]Started Editing.
+D2_L2=[4453]Stopped Editing.
+D2_E=71
+D2_D=0
+D2_L3=[4453]Project Closed.
+D3=29-07-2022
+D3_L=2
+D3_L1=[52129]Project Opened.
+D3_L2=[55244]Project Closed.
+D4=01-08-2022
+D4_L=2
+D4_L1=[61202]Project Opened.
+D4_L2=[61212]Project Closed.
+
+[Opened Files]
+1=disp7.c
+t1=65
+2=..\..\..\..\..\..\..\..\Downloads\d7seg2display.c
+t2=24
+Count=3
+3=..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\examples\ex_patg.c
+t3=37
+[disp7.c]
+Type=4
+
+[defines]
+buildcount=50
+[Units]
+Count=1
+1=disp7 (main)

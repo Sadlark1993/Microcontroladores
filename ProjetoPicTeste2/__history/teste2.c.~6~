@@ -1,0 +1,67 @@
+//#include <teste2.h>
+#include <16F877A.h>
+#device ADC=16
+
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOBROWNOUT               //No brownout reset
+#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+
+#use delay(crystal=20000000)
+
+
+//Esquema dos pinos do LCD
+#ifndef lcd_enable
+   #define lcd_enable pin_E1 // pino enable do LCD
+   #define lcd_rs pin_E2 // pino rs do LCD
+   //#define lcd_rw pin_e2 // pino rw do LCD
+   #define lcd_d4 pin_d4 // pino de dados d4 do LCD
+   #define lcd_d5 pin_d5 // pino de dados d5 do LCD
+   #define lcd_d6 pin_d6 // pino de dados d6 do LCD
+   #define lcd_d7 pin_d7 // pino de dados d7 do LCD
+#endif
+
+/*
+   Esquema dos pinos do teclado:
+   
+   R1 = RD0
+   R2 = RD1
+   R3 = RD2
+   R4 = RD3
+   C1 = RB1
+   C2 = RB2
+   C3 = RB3
+   C4 = RB4
+*/
+
+#include <mod_lcd.c>
+#include "kbd_ext_board2.c"
+
+unsigned char tmp;
+
+
+#INT_RTCC
+void  RTCC_isr(void) 
+{
+   if(!input(PIN_B4)||!input(PIN_B5)||!input(PIN_B6)||!input(PIN_B7)) output_high(PIN_C4);
+   else output_low(PIN_C4);
+}
+
+
+
+void main()
+{
+   set_tris_b(0xF0);
+   port_b_pullups(true);
+   setup_timer_0(RTCC_INTERNAL|RTCC_DIV_256|RTCC_8_bit);      //13,1 ms overflow
+
+   clear_interrupt(INT_RTCC);
+   enable_interrupts(INT_RTCC);
+   enable_interrupts(GLOBAL);
+
+   while(TRUE)
+   {
+      output_toggle(PIN_D1);
+      delay_ms(2000);
+   }
+
+}

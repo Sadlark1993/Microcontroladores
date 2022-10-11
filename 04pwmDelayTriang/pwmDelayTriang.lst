@@ -1,0 +1,256 @@
+CCS PCM C Compiler, Version 5.108Pd, 1               01-ago-22 19:39
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
+
+               Filename:   C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\04pwmDelayTriang\pwmDelayTriang.lst
+
+               ROM used:   178 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   14 (4%) at main() level
+                           15 (4%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   013
+0003:  NOP
+.................... //#include <pwmDelayTriang.h>
+.................... 
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=20000000)
+0004:  MOVLW  03
+0005:  SUBWF  2A,F
+0006:  BTFSS  03.0
+0007:  GOTO   012
+0008:  MOVLW  2A
+0009:  MOVWF  04
+000A:  BCF    03.7
+000B:  MOVF   00,W
+000C:  BTFSC  03.2
+000D:  GOTO   012
+000E:  GOTO   010
+000F:  GOTO   010
+0010:  DECFSZ 00,F
+0011:  GOTO   00F
+0012:  RETURN
+.................... 
+.................... 
+.................... void main()
+0013:  MOVF   03,W
+0014:  ANDLW  1F
+0015:  MOVWF  03
+0016:  BSF    03.5
+0017:  BSF    1F.0
+0018:  BSF    1F.1
+0019:  BSF    1F.2
+001A:  BCF    1F.3
+001B:  MOVLW  07
+001C:  MOVWF  1C
+001D:  BCF    03.7
+001E:  BCF    03.5
+001F:  CLRF   22
+0020:  CLRF   21
+0021:  CLRF   24
+0022:  CLRF   23
+0023:  MOVLW  03
+0024:  MOVWF  26
+0025:  MOVLW  E8
+0026:  MOVWF  25
+.................... {
+....................    unsigned int16 timer=0, duty=0, period=1000;
+.................... 
+....................    while(TRUE)
+....................    {
+....................       /*
+....................       //PWM 40%
+....................       output_high(PIN_D1);
+....................       delay_us(400);
+....................       output_low(PIN_D1);
+....................       delay_us(600);
+....................       */
+....................       
+....................       //pwm onda triangular
+....................       for(duty = 0; duty<=1000; duty++){
+0027:  CLRF   24
+0028:  CLRF   23
+0029:  MOVF   24,W
+002A:  SUBLW  03
+002B:  BTFSS  03.0
+002C:  GOTO   06F
+002D:  BTFSS  03.2
+002E:  GOTO   033
+002F:  MOVF   23,W
+0030:  SUBLW  E8
+0031:  BTFSS  03.0
+0032:  GOTO   06F
+....................          for(timer=0; timer<=10; timer++){
+0033:  CLRF   22
+0034:  CLRF   21
+0035:  MOVF   22,F
+0036:  BTFSS  03.2
+0037:  GOTO   06B
+0038:  MOVF   21,W
+0039:  SUBLW  0A
+003A:  BTFSS  03.0
+003B:  GOTO   06B
+....................             output_high(PIN_D1);
+003C:  BSF    03.5
+003D:  BCF    08.1
+003E:  BCF    03.5
+003F:  BSF    08.1
+....................             delay_us(duty);
+0040:  MOVF   24,W
+0041:  MOVWF  27
+0042:  INCF   27,F
+0043:  DECF   27,F
+0044:  BTFSC  03.2
+0045:  GOTO   04A
+0046:  MOVLW  FF
+0047:  MOVWF  2A
+0048:  CALL   004
+0049:  GOTO   043
+004A:  MOVF   23,W
+004B:  MOVWF  2A
+004C:  CALL   004
+....................             output_low(PIN_D1);
+004D:  BSF    03.5
+004E:  BCF    08.1
+004F:  BCF    03.5
+0050:  BCF    08.1
+....................             delay_us(period-duty);
+0051:  MOVF   23,W
+0052:  SUBWF  25,W
+0053:  MOVWF  27
+0054:  MOVF   26,W
+0055:  MOVWF  28
+0056:  MOVF   24,W
+0057:  BTFSS  03.0
+0058:  INCFSZ 24,W
+0059:  SUBWF  28,F
+005A:  MOVF   28,W
+005B:  MOVWF  29
+005C:  INCF   29,F
+005D:  DECF   29,F
+005E:  BTFSC  03.2
+005F:  GOTO   064
+0060:  MOVLW  FF
+0061:  MOVWF  2A
+0062:  CALL   004
+0063:  GOTO   05D
+0064:  MOVF   27,W
+0065:  MOVWF  2A
+0066:  CALL   004
+0067:  INCF   21,F
+0068:  BTFSC  03.2
+0069:  INCF   22,F
+006A:  GOTO   035
+....................          }
+006B:  INCF   23,F
+006C:  BTFSC  03.2
+006D:  INCF   24,F
+006E:  GOTO   029
+....................       
+....................       }
+....................       for(duty = 999; duty>=0; duty--){
+006F:  MOVLW  03
+0070:  MOVWF  24
+0071:  MOVLW  E7
+0072:  MOVWF  23
+....................          for(timer=0; timer<=10; timer++){
+0073:  CLRF   22
+0074:  CLRF   21
+0075:  MOVF   22,F
+0076:  BTFSS  03.2
+0077:  GOTO   0AB
+0078:  MOVF   21,W
+0079:  SUBLW  0A
+007A:  BTFSS  03.0
+007B:  GOTO   0AB
+....................             output_high(PIN_D1);
+007C:  BSF    03.5
+007D:  BCF    08.1
+007E:  BCF    03.5
+007F:  BSF    08.1
+....................             delay_us(duty);
+0080:  MOVF   24,W
+0081:  MOVWF  27
+0082:  INCF   27,F
+0083:  DECF   27,F
+0084:  BTFSC  03.2
+0085:  GOTO   08A
+0086:  MOVLW  FF
+0087:  MOVWF  2A
+0088:  CALL   004
+0089:  GOTO   083
+008A:  MOVF   23,W
+008B:  MOVWF  2A
+008C:  CALL   004
+....................             output_low(PIN_D1);
+008D:  BSF    03.5
+008E:  BCF    08.1
+008F:  BCF    03.5
+0090:  BCF    08.1
+....................             delay_us(period-duty);
+0091:  MOVF   23,W
+0092:  SUBWF  25,W
+0093:  MOVWF  27
+0094:  MOVF   26,W
+0095:  MOVWF  28
+0096:  MOVF   24,W
+0097:  BTFSS  03.0
+0098:  INCFSZ 24,W
+0099:  SUBWF  28,F
+009A:  MOVF   28,W
+009B:  MOVWF  29
+009C:  INCF   29,F
+009D:  DECF   29,F
+009E:  BTFSC  03.2
+009F:  GOTO   0A4
+00A0:  MOVLW  FF
+00A1:  MOVWF  2A
+00A2:  CALL   004
+00A3:  GOTO   09D
+00A4:  MOVF   27,W
+00A5:  MOVWF  2A
+00A6:  CALL   004
+00A7:  INCF   21,F
+00A8:  BTFSC  03.2
+00A9:  INCF   22,F
+00AA:  GOTO   075
+....................          }
+00AB:  MOVF   23,W
+00AC:  BTFSC  03.2
+00AD:  DECF   24,F
+00AE:  DECF   23,F
+00AF:  GOTO   073
+....................       
+....................       }
+00B0:  GOTO   027
+....................       
+.................... 
+.................... 
+....................       //TODO: User Code
+....................    }
+.................... 
+.................... }
+00B1:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

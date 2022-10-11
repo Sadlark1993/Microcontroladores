@@ -1,0 +1,127 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @TRIS_C
+021-027 c_time
+028-02E c_alarm1
+02F-035 c_alarm2
+036-037 myTime
+038     lcd_ini.conta
+038     bcd_to_decimal.number
+038     IntSqw_Set._config
+038     MAIN.@SCRATCH1
+038     @PSTRINGC7_643.@SCRATCH1
+039     IntSqw_Set.ctrl_reg
+039     lcd_ini.@SCRATCH1
+039     bcd_to_decimal.@SCRATCH1
+039     MAIN.@SCRATCH2
+039     @PSTRINGC7_643.@SCRATCH2
+03A     RTC_Read_Reg.reg_address
+03A     RTC_Write_Reg.reg_address
+03A     bcd_to_decimal.@SCRATCH2
+03A     MAIN.@SCRATCH3
+03A     @PSTRINGC7_643.@SCRATCH3
+03B     @PSTRINGCN7_643.P1
+03B     RTC_Write_Reg.reg_value
+03B     @PRINTF_U_643.P1
+03B     @MUL88.P2
+03B     RTC_Read_Reg.reg_data
+03B     @PSTRINGC7_643.@SCRATCH4
+03C     @PRINTF_U_643.P1
+03C     @I2C_WRITEU_1.P2
+03C     @I2C_READU_1.P3
+03C     @MUL88.P4
+03C     @PSTRINGCN7_643.@SCRATCH1
+03D     @DIV88.P1
+03D     @PSTRINGCN7_643.@SCRATCH2
+03E     @DIV88.P1
+03E     @PSTRINGCN7_643.@SCRATCH3
+03F     lcd_escreve.c
+03F     @DIV88.@SCRATCH1
+03F     @PSTRINGCN7_643.@SCRATCH4
+040     @delay_ms1.P1
+040     lcd_pos_xy.x
+041     lcd_pos_xy.y
+042     lcd_pos_xy.endereco
+043     lcd_pos_xy.@SCRATCH1
+044     lcd_envia_byte.endereco
+045     lcd_envia_byte.dado
+046     lcd_envia_byte.@SCRATCH1
+047     lcd_envia_nibble.dado
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  INI_LCD.call
+000008  INI_LCD.data
+00000C  @const794.call
+000013  @const796.call
+00001E  @delay_ms1
+000032  lcd_envia_nibble
+000059  lcd_envia_byte
+00007A  lcd_ini
+0000B7  lcd_escreve
+0000D1  lcd_pos_xy
+0000EE  @PSTRINGC7_643
+000146  @I2C_WRITEU_1
+000156  @I2C_READU_1
+000166  IntSqw_Set
+000168  RTC_Read_Reg
+000190  RTC_Write_Reg
+0001A6  bcd_to_decimal
+0001B0  @MUL88
+0001DB  RTC_Get
+000239  @PSTRINGCN7_643
+000292  @DIV88
+0002A7  @PRINTF_U_643
+0002DC  @cinit1
+0002DC  MAIN
+0002F8  @cinit2
+
+Project Directory:
+    C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\14RealTimeClock\
+
+Project Files:
+    mainRTC.c                                               [11-out-22 03:53  CRC=401378E6]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h [12-nov-13 14:35  CRC=81334808]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\mod_lcd.c [01-set-22 19:02  CRC=4ADD02A2]
+    DS3231.c                                                [11-out-22 02:23  CRC=57940F44]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdint.h [30-dez-08 09:01  CRC=9F7F640F]
+
+Source signature=A2B69AF2
+
+Units:
+    mainRTC (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   mainRTC.xsym
+    Errors:      mainRTC.err
+    Ext Symbols: mainRTC.esym
+    INHX8:       mainRTC.hex
+    Symbols:     mainRTC.sym
+    List:        mainRTC.lst
+    Debug/COFF:  mainRTC.cof
+    Project:     mainRTC.ccspjt
+    Call Tree:   mainRTC.tre
+    Statistics:  mainRTC.STA

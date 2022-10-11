@@ -1,0 +1,37 @@
+//#include <main.h>
+#include <16F877A.h>
+#device ADC=8
+
+#FUSES NOWDT                    //No Watch Dog Timer
+#FUSES NOBROWNOUT               //No brownout reset
+#FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+
+#use delay(crystal=20000000)
+
+#INT_RB 
+void  RB_isr(void) 
+{ 
+   output_toggle(PIN_D1);
+   if(!input(PIN_B4)||!input(PIN_B5)||!input(PIN_B6)||!input(PIN_B7))
+      output_toggle(PIN_C4);
+}
+
+void main()
+{  
+   set_tris_b(0xF0);
+   port_b_pullups(true);
+   output_high(PIN_D0);
+   output_low(PIN_B0);
+   output_low(PIN_B1);
+   output_low(PIN_B2);
+   output_low(PIN_B3);
+
+   clear_interrupt(INT_RB);
+   enable_interrupts(INT_RB);
+   enable_interrupts(GLOBAL);
+
+   while(TRUE){
+      output_toggle(PIN_D0);
+      delay_ms(500);
+   }
+}

@@ -1,0 +1,20 @@
+#include <main.h>
+
+void main()
+{
+	setup_adc_ports(AN0_AN1_AN3);
+	setup_adc(ADC_CLOCK_INTERNAL);
+
+	while(TRUE)
+	{
+
+		//Example blinking LED program
+		output_low(LED);
+		delay_ms(DELAY);
+		output_high(LED);
+		delay_ms(DELAY);
+
+		//TODO: User Code
+	}
+
+}

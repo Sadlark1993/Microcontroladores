@@ -1,0 +1,5 @@
+>>> Warning 216 "teste2.c" Line 85(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
+>>> Warning 202 "teste2.c" Line 40(6,11): Variable never used:   count
+      Memory usage:   ROM=11%      RAM=5% - 10%
+      0 Errors,  2 Warnings.
+Build Successful.

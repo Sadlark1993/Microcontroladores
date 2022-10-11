@@ -1,0 +1,165 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+021-024 atan2.y
+021     MAIN.valorAn
+022     @delay_ms1.P1
+022     MAIN.@SCRATCH1
+023     MAIN.@SCRATCH2
+024     MAIN.@SCRATCH3
+025-028 atan2.x
+025     MAIN.@SCRATCH4
+026-029 pow.x
+029-02C atan2.z
+02A-02D pow.y
+02D.0   atan2.sign
+02E-031 fmod.x
+02E     atan2.quad
+02E     pow.@SCRATCH1
+02F     pow.@SCRATCH2
+030     pow.@SCRATCH3
+031     pow.@SCRATCH4
+032-035 exp.x
+032-035 fmod.y
+032-035 log.x
+036-039 exp.y
+036-039 fmod.i
+036-039 log.y
+03A-03D log.res
+03A-03D exp.res
+03A     fmod.@SCRATCH1
+03B     fmod.@SCRATCH2
+03C     fmod.@SCRATCH3
+03D     fmod.@SCRATCH4
+03E-041 exp.r
+03E-041 floor.x
+03E-041 log.r
+03E-041 ceil.x
+042     exp.n
+042-045 CEIL_FLOOR.x
+042-045 log.y2
+043.0   exp.s
+044     exp.@SCRATCH1
+045     exp.@SCRATCH2
+046     log.n
+046     CEIL_FLOOR.n
+046     exp.@SCRATCH3
+047-04A CEIL_FLOOR.y
+047     exp.@SCRATCH4
+047     log.@SCRATCH1
+048-049 @SITOF.P1
+048     log.@SCRATCH2
+049     log.@SCRATCH3
+04A     log.@SCRATCH4
+04B-04E CEIL_FLOOR.res
+04B-04E @DIVFF.P1
+04F-050 CEIL_FLOOR.l
+04F-052 @DIVFF.P1
+051.0   CEIL_FLOOR.s
+052-055 @SFTOI.P1
+052-055 @MULFF.P2
+052-055 @FLT.P3
+052     CEIL_FLOOR.@SCRATCH1
+053     CEIL_FLOOR.@SCRATCH2
+053     @DIVFF.@SCRATCH1
+054     CEIL_FLOOR.@SCRATCH3
+054     @DIVFF.@SCRATCH2
+055     CEIL_FLOOR.@SCRATCH4
+055     @DIVFF.@SCRATCH3
+056-059 @FLT.P1
+056-059 @ADDFF.P2
+056-057 @ITOF.P3
+056-059 @MULFF.P4
+056     @DIVFF.@SCRATCH4
+057     @DIVFF.@SCRATCH5
+058     @DIVFF.@SCRATCH6
+05A-05D @ADDFF.P1
+05A     @FLT.@SCRATCH1
+05A     @MULFF.@SCRATCH1
+05B     @FLT.@SCRATCH2
+05B     @MULFF.@SCRATCH2
+05C     @MULFF.@SCRATCH3
+05D     @MULFF.@SCRATCH4
+05E     @MULFF.@SCRATCH5
+05E     @ADDFF.@SCRATCH1
+05F     @ADDFF.@SCRATCH2
+060     @ADDFF.@SCRATCH3
+061     @ADDFF.@SCRATCH4
+062     @ADDFF.@SCRATCH5
+063     @ADDFF.@SCRATCH6
+064     @ADDFF.@SCRATCH7
+065     @ADDFF.@SCRATCH8
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+00001A  @ITOF
+000037  @DIVFF
+000101  @ADDFF
+000242  @SFTOI
+000261  @FLT
+0002A0  @MULFF
+000315  CEIL_FLOOR
+0004A6  fmod
+0004FE  ceil
+00052B  floor
+000562  @SITOF
+000587  log
+00072B  @cinit1
+00072B  MAIN
+000735  @cinit2
+000800  exp
+000A03  pow
+
+Project Directory:
+    C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\05ADConv\
+
+Project Files:
+    ADConv.c                                                [12-ago-22 15:07  CRC=EC283B33]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\Devices\16F877A.h [27-abr-22 08:07  CRC=4E256CC5]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\Drivers\math.h [05-mai-20 13:57  CRC=02232397]
+
+Source signature=3E93EF26
+Program memory checksum=0000
+Hex file CRC=41B4
+
+Units:
+    C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\05ADConv\ADConv (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
+
+Output Files:
+    XREF file:   ADConv.xsym
+    Errors:      ADConv.err
+    Ext Symbols: ADConv.esym
+    INHX8:       ADConv.hex
+    Symbols:     ADConv.sym
+    List:        ADConv.lst
+    Debug/COFF:  ADConv.cof
+    Project:     ADConv.ccspjt
+    Call Tree:   ADConv.tre
+    Statistics:  ADConv.STA

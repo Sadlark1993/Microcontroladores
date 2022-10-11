@@ -1,0 +1,291 @@
+CCS PCM C Compiler, Version 5.108Pd, 1               01-set-22 22:00
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
+
+               Filename:   C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\07miniTeste1-2\piscInterrupt.lst
+
+               ROM used:   179 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   19 (5%) at main() level
+                           21 (6%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   07C
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  BTFSS  0B.5
+0018:  GOTO   01B
+0019:  BTFSC  0B.2
+001A:  GOTO   02C
+001B:  MOVF   22,W
+001C:  MOVWF  04
+001D:  MOVF   23,W
+001E:  MOVWF  77
+001F:  MOVF   24,W
+0020:  MOVWF  78
+0021:  MOVF   25,W
+0022:  MOVWF  79
+0023:  MOVF   26,W
+0024:  MOVWF  7A
+0025:  MOVF   20,W
+0026:  MOVWF  0A
+0027:  SWAPF  21,W
+0028:  MOVWF  03
+0029:  SWAPF  7F,F
+002A:  SWAPF  7F,W
+002B:  RETFIE
+002C:  BCF    0A.3
+002D:  BCF    0A.4
+002E:  GOTO   02F
+.................... //autor: Claudio Zimmermann Jr.
+.................... /*
+....................    Faca o circuito e o programa que liga um LED1 e desliga LED2 quando o botao
+.................... (BOT1) estiver apertado e desliga LED1 e liga o LED2 se o botao (BOT1) estiver
+.................... solto. Os LED 3, 4 e 5 devem ficar piscando com frequencias de 1.3, 2 e 3.5
+.................... vezes n Hz. Onde n eh igual a soma do ultimo e penultimo numero da sua 
+.................... matricula.
+.................... 
+.................... Pinos:
+....................  LED1 = PIN_D0
+....................  LED2 = PIN_D1
+....................  LED3 = PIN_D2
+....................  LED4 = PIN_D3
+....................  LED5 = PIN_D4
+....................  
+....................  BOT1 = PIN_B3
+.................... 
+.................... */
+.................... 
+.................... //#include <piscInterrupt.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=20000000)
+.................... 
+.................... #define LED1 PIN_D0
+.................... #define LED2 PIN_D1
+.................... #define LED3 PIN_D2
+.................... #define LED4 PIN_D3
+.................... #define LED5 PIN_D4
+.................... 
+.................... unsigned long int c = 1;
+.................... unsigned long int b = 1;
+.................... unsigned long int a = 1;
+.................... 
+.................... #INT_RTCC
+.................... void  RTCC_isr(void) 
+.................... {
+....................    if(c++ == 310){
+002F:  MOVF   28,W
+0030:  MOVWF  7A
+0031:  MOVF   27,W
+0032:  INCF   27,F
+0033:  BTFSC  03.2
+0034:  INCF   28,F
+0035:  MOVWF  2E
+0036:  MOVF   7A,W
+0037:  MOVWF  2F
+0038:  MOVF   2E,W
+0039:  SUBLW  36
+003A:  BTFSS  03.2
+003B:  GOTO   046
+003C:  DECFSZ 2F,W
+003D:  GOTO   046
+....................       output_toggle(LED5);
+003E:  BSF    03.5
+003F:  BCF    08.4
+0040:  MOVLW  10
+0041:  BCF    03.5
+0042:  XORWF  08,F
+....................       c = 1;
+0043:  CLRF   28
+0044:  MOVLW  01
+0045:  MOVWF  27
+....................    }
+....................    if(b++ == 543){
+0046:  MOVF   2A,W
+0047:  MOVWF  7A
+0048:  MOVF   29,W
+0049:  INCF   29,F
+004A:  BTFSC  03.2
+004B:  INCF   2A,F
+004C:  MOVWF  2E
+004D:  MOVF   7A,W
+004E:  MOVWF  2F
+004F:  MOVF   2E,W
+0050:  SUBLW  1F
+0051:  BTFSS  03.2
+0052:  GOTO   05F
+0053:  MOVF   2F,W
+0054:  SUBLW  02
+0055:  BTFSS  03.2
+0056:  GOTO   05F
+....................       output_toggle(LED4);
+0057:  BSF    03.5
+0058:  BCF    08.3
+0059:  MOVLW  08
+005A:  BCF    03.5
+005B:  XORWF  08,F
+....................       b = 1;
+005C:  CLRF   2A
+005D:  MOVLW  01
+005E:  MOVWF  29
+....................    }
+....................    if(a++ == 835){
+005F:  MOVF   2C,W
+0060:  MOVWF  7A
+0061:  MOVF   2B,W
+0062:  INCF   2B,F
+0063:  BTFSC  03.2
+0064:  INCF   2C,F
+0065:  MOVWF  2E
+0066:  MOVF   7A,W
+0067:  MOVWF  2F
+0068:  MOVF   2E,W
+0069:  SUBLW  43
+006A:  BTFSS  03.2
+006B:  GOTO   078
+006C:  MOVF   2F,W
+006D:  SUBLW  03
+006E:  BTFSS  03.2
+006F:  GOTO   078
+....................       output_toggle(LED3);
+0070:  BSF    03.5
+0071:  BCF    08.2
+0072:  MOVLW  04
+0073:  BCF    03.5
+0074:  XORWF  08,F
+....................       a = 1;
+0075:  CLRF   2C
+0076:  MOVLW  01
+0077:  MOVWF  2B
+....................    }
+....................    
+....................    
+0078:  BCF    0B.2
+0079:  BCF    0A.3
+007A:  BCF    0A.4
+007B:  GOTO   01B
+.................... }
+.................... 
+.................... void main()
+007C:  MOVF   03,W
+007D:  ANDLW  1F
+007E:  MOVWF  03
+007F:  CLRF   28
+0080:  MOVLW  01
+0081:  MOVWF  27
+0082:  CLRF   2A
+0083:  MOVWF  29
+0084:  CLRF   2C
+0085:  MOVWF  2B
+0086:  BSF    03.5
+0087:  BSF    1F.0
+0088:  BSF    1F.1
+0089:  BSF    1F.2
+008A:  BCF    1F.3
+008B:  MOVLW  07
+008C:  MOVWF  1C
+008D:  BCF    03.7
+.................... {
+....................    output_d(0);
+008E:  CLRF   08
+008F:  BCF    03.5
+0090:  CLRF   08
+....................    int1 i = 0;
+0091:  BCF    2D.0
+.................... 
+....................    
+....................    setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1|RTCC_8_BIT);      //51,2 us overflow
+0092:  BSF    03.5
+0093:  MOVF   01,W
+0094:  ANDLW  C7
+0095:  IORLW  08
+0096:  MOVWF  01
+.................... 
+.................... 
+....................    enable_interrupts(INT_RTCC);
+0097:  BCF    03.5
+0098:  BSF    0B.5
+....................    enable_interrupts(GLOBAL);
+0099:  MOVLW  C0
+009A:  IORWF  0B,F
+.................... 
+....................    while(TRUE)
+....................    {
+....................       //input pull up (valor 0 no pino quando aperta o botao).
+....................       i = input_state(pin_B3);
+009B:  BCF    2D.0
+009C:  BTFSC  06.3
+009D:  BSF    2D.0
+....................       if(i){
+009E:  BTFSS  2D.0
+009F:  GOTO   0A9
+....................          output_high(LED2);
+00A0:  BSF    03.5
+00A1:  BCF    08.1
+00A2:  BCF    03.5
+00A3:  BSF    08.1
+....................          output_low(LED1);
+00A4:  BSF    03.5
+00A5:  BCF    08.0
+00A6:  BCF    03.5
+00A7:  BCF    08.0
+....................       }else{
+00A8:  GOTO   0B1
+....................          output_high(LED1);
+00A9:  BSF    03.5
+00AA:  BCF    08.0
+00AB:  BCF    03.5
+00AC:  BSF    08.0
+....................          output_low(LED2);
+00AD:  BSF    03.5
+00AE:  BCF    08.1
+00AF:  BCF    03.5
+00B0:  BCF    08.1
+....................       }
+00B1:  GOTO   09B
+.................... 
+....................       //TODO: User Code
+....................    }
+.................... 
+.................... }
+00B2:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

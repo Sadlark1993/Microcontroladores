@@ -1,0 +1,23 @@
+#include <interrupt.h>
+
+#INT_RTCC
+void  RTCC_isr(void) 
+{
+   //entra a cada 13.1ms
+}
+
+void main()
+{
+   setup_timer_0(RTCC_INTERNAL|RTCC_DIV_256|RTCC_8_BIT);      //13,1 ms overflow
+
+
+   enable_interrupts(INT_RTCC);
+   enable_interrupts(GLOBAL);
+
+   while(TRUE)
+   {
+
+
+      //TODO: User Code
+   }
+}

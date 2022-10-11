@@ -1,0 +1,5 @@
+ÀÄpiscInterrupt
+   ÃÄMAIN  0/55  Ram=1
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÀÄ@cinit2  (Inline)  Ram=0
+   ÀÄRTCC_isr  0/77  Ram=2

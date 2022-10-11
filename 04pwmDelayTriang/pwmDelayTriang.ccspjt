@@ -1,0 +1,51 @@
+[PROJECT]
+Target=pwmDelayTriang.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.108dP-0427
+Compiler=PCM
+CCSVersion=5.108Pd
+[Target Data]
+FileList=pwmDelayTriang.c
+[Directories]
+Include=
+[C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\04pwmDelayTriang\pwmDelayTriang]
+Type=4
+[mru-list]
+1=pwmDelayTriang.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=2
+D1=01-08-2022
+D1_L=6
+D1_L1=[69351]Project Opened.
+D1_L2=[69374]Started Editing.
+D1_L3=[69998]Stopped Editing.
+D1_L4=[70182]Started Editing.
+D1_L5=[71071]Stopped Editing.
+TotalEdit=16
+TotalDebug=0
+D1_E=16
+D1_D=0
+D1_L6=[71195]Project Closed.
+D2=03-08-2022
+D2_L=2
+D2_L1=[66328]Project Opened.
+D2_L2=[68075]Project Closed.
+
+[Opened Files]
+1=pwmDelayTriang.c
+t1=21
+2=pwmDelayTriang.h
+t2=1
+Count=0
+[pwmDelayTriang.c]
+Type=4
+
+[defines]
+buildcount=7
+[Units]
+Count=1
+1=pwmDelayTriang (main)

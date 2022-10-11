@@ -1,0 +1,51 @@
+[PROJECT]
+Target=interrupt.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.108dP-0427
+Compiler=PCM
+CCSVersion=5.108Pd
+[Target Data]
+FileList=interrupt.c
+[Directories]
+Include=
+[C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\03interrupt\interrupt]
+Type=4
+[mru-list]
+1=interrupt.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=01-08-2022
+D1_L=12
+D1_L1=[66014]Project Opened.
+D1_L2=[66332]Started Editing.
+D1_L3=[66812]Stopped Editing.
+D1_L4=[67332]Started Editing.
+D1_L5=[67670]Stopped Editing.
+D1_L6=[68145]Started Editing.
+D1_L7=[68539]Stopped Editing.
+D1_L8=[68610]Started Editing.
+D1_L9=[68638]Stopped Editing.
+TotalEdit=6
+TotalDebug=0
+D1_E=6
+D1_D=0
+D1_L10=[68638]Project Closed.
+D1_L11=[69218]Project Opened.
+D1_L12=[69227]Project Closed.
+
+[Opened Files]
+1=interrupt.c
+t1=1
+Count=1
+[interrupt.c]
+Type=4
+
+[defines]
+buildcount=4
+[Units]
+Count=1
+1=interrupt (main)

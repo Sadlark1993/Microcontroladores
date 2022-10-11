@@ -1,0 +1,136 @@
+CCS PCM C Compiler, Version 5.015, 5967               04-out-22 09:15
+
+               Filename:   C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\01Pisca\Pisca.lst
+
+               ROM used:   78 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   7 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   018
+0003:  NOP
+....................  
+.................... //****PISCA LED**** 
+.................... //#include <Pisca.h> 
+....................  
+.................... #include <16F877A.h> 
+.................... //////////// Standard Header file for the PIC16F877A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877A 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10 
+.................... #use delay(crystal=20000000) 
+0004:  MOVLW  22
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+....................  
+.................... #define LED PIN_C4 
+.................... #define DELAY 500 
+....................  
+.................... void main() 
+0018:  MOVF   03,W
+0019:  ANDLW  1F
+001A:  MOVWF  03
+001B:  MOVLW  FF
+001C:  MOVWF  20
+001D:  BSF    03.5
+001E:  BSF    1F.0
+001F:  BSF    1F.1
+0020:  BSF    1F.2
+0021:  BCF    1F.3
+0022:  MOVLW  07
+0023:  MOVWF  1C
+0024:  BCF    03.7
+.................... { 
+....................    output_high(PIN_C3); 
+0025:  BCF    03.5
+0026:  BCF    20.3
+0027:  MOVF   20,W
+0028:  BSF    03.5
+0029:  MOVWF  07
+002A:  BCF    03.5
+002B:  BSF    07.3
+....................    //output_high(PIN_B1); 
+....................    //output_low(PIN_B3); 
+....................    while(TRUE) 
+....................    { 
+....................       output_high(PIN_C3); 
+002C:  BCF    20.3
+002D:  MOVF   20,W
+002E:  BSF    03.5
+002F:  MOVWF  07
+0030:  BCF    03.5
+0031:  BSF    07.3
+....................       //Example blinking LED program 
+....................       output_low(LED); 
+0032:  BCF    20.4
+0033:  MOVF   20,W
+0034:  BSF    03.5
+0035:  MOVWF  07
+0036:  BCF    03.5
+0037:  BCF    07.4
+....................       delay_ms(DELAY); 
+0038:  MOVLW  02
+0039:  MOVWF  21
+003A:  MOVLW  FA
+003B:  MOVWF  22
+003C:  CALL   004
+003D:  DECFSZ 21,F
+003E:  GOTO   03A
+....................       output_high(LED); 
+003F:  BCF    20.4
+0040:  MOVF   20,W
+0041:  BSF    03.5
+0042:  MOVWF  07
+0043:  BCF    03.5
+0044:  BSF    07.4
+....................       delay_ms(DELAY); 
+0045:  MOVLW  02
+0046:  MOVWF  21
+0047:  MOVLW  FA
+0048:  MOVWF  22
+0049:  CALL   004
+004A:  DECFSZ 21,F
+004B:  GOTO   047
+004C:  GOTO   02C
+....................  
+....................       //TODO: User Code 
+....................    } 
+....................  
+.................... } 
+004D:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

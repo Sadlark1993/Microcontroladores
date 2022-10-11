@@ -1,0 +1,364 @@
+CCS PCM C Compiler, Version 5.108Pd, 1               23-jul-22 01:09
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
+
+               Filename:   C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\02Disp7\disp7.lst
+
+               ROM used:   241 words (3%)
+                           Largest free fragment is 2048
+               RAM used:   22 (6%) at main() level
+                           24 (7%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   02D
+0003:  NOP
+.................... /*
+....................    O algoritmo abaixo exibe numeros nosdisplays de 7 segmentos incrementando 
+.................... do dado valor inicial ate o dado valor final. Depois ele faz o inverso,
+.................... decrementando ate o valor final. E assim sucessivamente.
+.................... */
+.................... 
+.................... //#include <disp7.h>
+.................... 
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+0004:  MOVF   32,W
+0005:  CLRF   78
+0006:  SUBWF  31,W
+0007:  BTFSC  03.0
+0008:  GOTO   00C
+0009:  MOVF   31,W
+000A:  MOVWF  77
+000B:  GOTO   018
+000C:  CLRF   77
+000D:  MOVLW  08
+000E:  MOVWF  33
+000F:  RLF    31,F
+0010:  RLF    77,F
+0011:  MOVF   32,W
+0012:  SUBWF  77,W
+0013:  BTFSC  03.0
+0014:  MOVWF  77
+0015:  RLF    78,F
+0016:  DECFSZ 33,F
+0017:  GOTO   00F
+0018:  RETURN
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=8
+.................... #use delay(crystal=20000000)
+0019:  MOVLW  31
+001A:  MOVWF  04
+001B:  BCF    03.7
+001C:  MOVF   00,W
+001D:  BTFSC  03.2
+001E:  GOTO   02C
+001F:  MOVLW  06
+0020:  MOVWF  78
+0021:  CLRF   77
+0022:  DECFSZ 77,F
+0023:  GOTO   022
+0024:  DECFSZ 78,F
+0025:  GOTO   021
+0026:  MOVLW  7B
+0027:  MOVWF  77
+0028:  DECFSZ 77,F
+0029:  GOTO   028
+002A:  DECFSZ 00,F
+002B:  GOTO   01F
+002C:  RETURN
+.................... 
+.................... //constantes
+.................... #define DELAY 5
+.................... #define INICIO 9
+.................... #define FINAL 92
+.................... #define DISP4 PIN_A5
+.................... #define DISP3 PIN_A4
+.................... #define DISP2 PIN_A3
+.................... #define DISP1 PIN_A2
+.................... #define TEMPO 30
+.................... 
+.................... void main()
+002D:  MOVF   03,W
+002E:  ANDLW  1F
+002F:  MOVWF  03
+0030:  BSF    03.5
+0031:  BSF    1F.0
+0032:  BSF    1F.1
+0033:  BSF    1F.2
+0034:  BCF    1F.3
+0035:  MOVLW  07
+0036:  MOVWF  1C
+0037:  BCF    03.7
+.................... {
+....................    unsigned int n[10];
+....................    
+....................    n[0] = 0b00111111; //0
+0038:  MOVLW  3F
+0039:  BCF    03.5
+003A:  MOVWF  21
+....................    n[1] = 0b00000110; //1
+003B:  MOVLW  06
+003C:  MOVWF  22
+....................    n[2] = 0b01011011; //2
+003D:  MOVLW  5B
+003E:  MOVWF  23
+....................    n[3] = 0b01001111; //3
+003F:  MOVLW  4F
+0040:  MOVWF  24
+....................    n[4] = 0b01100110; //4
+0041:  MOVLW  66
+0042:  MOVWF  25
+....................    n[5] = 0b01101101; //5
+0043:  MOVLW  6D
+0044:  MOVWF  26
+....................    n[6] = 0b01111101; //6
+0045:  MOVLW  7D
+0046:  MOVWF  27
+....................    n[7] = 0b00000111; //7
+0047:  MOVLW  07
+0048:  MOVWF  28
+....................    n[8] = 0b01111111; //8
+0049:  MOVLW  7F
+004A:  MOVWF  29
+....................    n[9] = 0b01101111; //9
+004B:  MOVLW  6F
+004C:  MOVWF  2A
+....................    
+....................    output_high(DISP4);
+004D:  BSF    03.5
+004E:  BCF    05.5
+004F:  BCF    03.5
+0050:  BSF    05.5
+....................    output_high(DISP3);
+0051:  BSF    03.5
+0052:  BCF    05.4
+0053:  BCF    03.5
+0054:  BSF    05.4
+....................    output_low(DISP2);
+0055:  BSF    03.5
+0056:  BCF    05.3
+0057:  BCF    03.5
+0058:  BCF    05.3
+....................    output_low(DISP1);
+0059:  BSF    03.5
+005A:  BCF    05.2
+005B:  BCF    03.5
+005C:  BCF    05.2
+.................... 
+....................    unsigned int u;
+....................    unsigned int d;
+....................    
+....................    while(TRUE)
+....................    {
+....................       //incrementando...
+....................       for(unsigned int i = INICIO;i <= FINAL;i++){
+005D:  MOVLW  09
+005E:  MOVWF  2D
+005F:  MOVF   2D,W
+0060:  SUBLW  5C
+0061:  BTFSS  03.0
+0062:  GOTO   0A6
+....................          //definindo dezenas e unidades
+....................          d = i/10;
+0063:  MOVF   2D,W
+0064:  MOVWF  31
+0065:  MOVLW  0A
+0066:  MOVWF  32
+0067:  CALL   004
+0068:  MOVF   78,W
+0069:  MOVWF  2C
+....................          u = i%10;
+006A:  MOVF   2D,W
+006B:  MOVWF  31
+006C:  MOVLW  0A
+006D:  MOVWF  32
+006E:  CALL   004
+006F:  MOVF   77,W
+0070:  MOVWF  2B
+....................          
+....................          for(unsigned int t=0; t<= TEMPO; t++){//tempo de exibicao por numero
+0071:  CLRF   2E
+0072:  MOVF   2E,W
+0073:  SUBLW  1E
+0074:  BTFSS  03.0
+0075:  GOTO   0A4
+....................             output_low(DISP3);
+0076:  BSF    03.5
+0077:  BCF    05.4
+0078:  BCF    03.5
+0079:  BCF    05.4
+....................             output_d(n[u]);
+007A:  MOVLW  21
+007B:  ADDWF  2B,W
+007C:  MOVWF  04
+007D:  BCF    03.7
+007E:  MOVF   00,W
+007F:  MOVWF  31
+0080:  BSF    03.5
+0081:  CLRF   08
+0082:  BCF    03.5
+0083:  MOVF   31,W
+0084:  MOVWF  08
+....................             output_high(DISP4);
+0085:  BSF    03.5
+0086:  BCF    05.5
+0087:  BCF    03.5
+0088:  BSF    05.5
+....................             delay_ms(DELAY);
+0089:  MOVLW  05
+008A:  MOVWF  31
+008B:  CALL   019
+....................             
+....................             output_low(DISP4);
+008C:  BSF    03.5
+008D:  BCF    05.5
+008E:  BCF    03.5
+008F:  BCF    05.5
+....................             output_d(n[d]);
+0090:  MOVLW  21
+0091:  ADDWF  2C,W
+0092:  MOVWF  04
+0093:  BCF    03.7
+0094:  MOVF   00,W
+0095:  MOVWF  31
+0096:  BSF    03.5
+0097:  CLRF   08
+0098:  BCF    03.5
+0099:  MOVF   31,W
+009A:  MOVWF  08
+....................             output_high(DISP3);
+009B:  BSF    03.5
+009C:  BCF    05.4
+009D:  BCF    03.5
+009E:  BSF    05.4
+....................             delay_ms(DELAY);
+009F:  MOVLW  05
+00A0:  MOVWF  31
+00A1:  CALL   019
+00A2:  INCF   2E,F
+00A3:  GOTO   072
+....................          }
+00A4:  INCF   2D,F
+00A5:  GOTO   05F
+....................          
+....................       }
+....................       
+....................       //decrementando...
+....................       for(unsigned int i = FINAL;i >= INICIO;i--){
+00A6:  MOVLW  5C
+00A7:  MOVWF  2F
+00A8:  MOVF   2F,W
+00A9:  SUBLW  08
+00AA:  BTFSC  03.0
+00AB:  GOTO   0EF
+....................          //definindo dezenas e unidades
+....................          d = i/10;
+00AC:  MOVF   2F,W
+00AD:  MOVWF  31
+00AE:  MOVLW  0A
+00AF:  MOVWF  32
+00B0:  CALL   004
+00B1:  MOVF   78,W
+00B2:  MOVWF  2C
+....................          u = i%10;
+00B3:  MOVF   2F,W
+00B4:  MOVWF  31
+00B5:  MOVLW  0A
+00B6:  MOVWF  32
+00B7:  CALL   004
+00B8:  MOVF   77,W
+00B9:  MOVWF  2B
+....................          //tempo em que o numero ficarah mostrando no disp.
+....................          for(unsigned int t=0; t<= TEMPO; t++){
+00BA:  CLRF   30
+00BB:  MOVF   30,W
+00BC:  SUBLW  1E
+00BD:  BTFSS  03.0
+00BE:  GOTO   0ED
+....................             output_low(DISP3);
+00BF:  BSF    03.5
+00C0:  BCF    05.4
+00C1:  BCF    03.5
+00C2:  BCF    05.4
+....................             output_d(n[u]);
+00C3:  MOVLW  21
+00C4:  ADDWF  2B,W
+00C5:  MOVWF  04
+00C6:  BCF    03.7
+00C7:  MOVF   00,W
+00C8:  MOVWF  31
+00C9:  BSF    03.5
+00CA:  CLRF   08
+00CB:  BCF    03.5
+00CC:  MOVF   31,W
+00CD:  MOVWF  08
+....................             output_high(DISP4);
+00CE:  BSF    03.5
+00CF:  BCF    05.5
+00D0:  BCF    03.5
+00D1:  BSF    05.5
+....................             delay_ms(DELAY);
+00D2:  MOVLW  05
+00D3:  MOVWF  31
+00D4:  CALL   019
+....................             
+....................             output_low(DISP4);
+00D5:  BSF    03.5
+00D6:  BCF    05.5
+00D7:  BCF    03.5
+00D8:  BCF    05.5
+....................             output_d(n[d]);
+00D9:  MOVLW  21
+00DA:  ADDWF  2C,W
+00DB:  MOVWF  04
+00DC:  BCF    03.7
+00DD:  MOVF   00,W
+00DE:  MOVWF  31
+00DF:  BSF    03.5
+00E0:  CLRF   08
+00E1:  BCF    03.5
+00E2:  MOVF   31,W
+00E3:  MOVWF  08
+....................             output_high(DISP3);
+00E4:  BSF    03.5
+00E5:  BCF    05.4
+00E6:  BCF    03.5
+00E7:  BSF    05.4
+....................             delay_ms(DELAY);
+00E8:  MOVLW  05
+00E9:  MOVWF  31
+00EA:  CALL   019
+00EB:  INCF   30,F
+00EC:  GOTO   0BB
+....................          }
+00ED:  DECF   2F,F
+00EE:  GOTO   0A8
+....................          
+....................       }
+00EF:  GOTO   05D
+....................       
+....................       
+....................       //TODO: User Code
+....................    }
+.................... 
+.................... }
+00F0:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

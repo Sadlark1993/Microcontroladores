@@ -1,0 +1,24 @@
+[PROJECT]
+Target=teste2.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.015
+Compiler=PCM
+CCSVersion=5.015
+[Target Data]
+FileList=teste2.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\ProjetoPicTeste2\teste2]
+Type=4
+[mru-list]
+1=teste2.c
+[Opened Files]
+1=teste2.c
+2=kbd_ext_board2.c
+3=
+4=
+[teste2.c]
+Type=4
+[Units]
+Count=1
+1=teste2 (main)

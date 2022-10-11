@@ -1,0 +1,22 @@
+#include <main.h>
+
+#INT_EXT
+void  EXT_isr(void) 
+{
+   output_toggle(PIN_D1);
+}
+
+void main()
+{
+   
+   clear_interrupt(INT_EXT);
+   ext_int_edge(h_to_l);
+   enable_interrupts(INT_EXT);
+   enable_interrupts(GLOBAL);
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

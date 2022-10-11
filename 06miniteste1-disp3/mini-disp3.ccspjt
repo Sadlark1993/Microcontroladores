@@ -1,0 +1,49 @@
+[PROJECT]
+Target=mini-disp3.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.108dP-0427
+Compiler=PCM
+CCSVersion=5.108Pd
+[Target Data]
+FileList=mini-disp3.c
+[Directories]
+Include=
+[C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\06miniteste1-disp3\mini-disp3]
+Type=4
+[mru-list]
+1=mini-disp3.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=01-09-2022
+D1_L=6
+D1_L1=[68409]Project Opened.
+D1_L2=[68957]Started Editing.
+D1_L3=[70163]Stopped Editing.
+D1_L4=[72490]Started Editing.
+D1_L5=[73918]Stopped Editing.
+TotalEdit=34
+TotalDebug=0
+D1_E=34
+D1_D=0
+D1_L6=[76231]Project Closed.
+
+[Opened Files]
+1=mini-disp3.c
+t1=12
+2=..\05ADConv\ADConv.c
+t2=9
+Count=3
+3=..\03interrupt\interrupt.c
+t3=9
+[mini-disp3.c]
+Type=4
+
+[defines]
+buildcount=5
+[Units]
+Count=1
+1=mini-disp3 (main)

@@ -1,0 +1,63 @@
+[PROJECT]
+Target=ADConv.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.108dP-0427
+Compiler=PCM
+CCSVersion=5.108Pd
+[Target Data]
+FileList=ADConv.c
+[Directories]
+Include=
+[C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\05ADConv\ADConv]
+Type=4
+[mru-list]
+1=ADConv.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=3
+D1=03-08-2022
+D1_L=10
+D1_L1=[68075]Project Opened.
+D1_L2=[68104]Started Editing.
+D1_L3=[68446]Stopped Editing.
+D1_L4=[69295]Started Editing.
+D1_L5=[69823]Stopped Editing.
+D1_L6=[70143]Started Editing.
+D1_L7=[71528]Stopped Editing.
+TotalEdit=32
+TotalDebug=0
+D1_E=28
+D1_D=0
+D1_L8=[71528]Project Closed.
+D1_L9=[71593]Project Opened.
+D1_L10=[73384]Project Closed.
+D2=12-08-2022
+D2_L=4
+D2_L1=[54223]Project Opened.
+D2_L2=[54229]Started Editing.
+D2_L3=[54727]Stopped Editing.
+D2_E=4
+D2_D=0
+D2_L4=[61952]Project Closed.
+D3=01-09-2022
+D3_L=4
+D3_L1=[66415]Project Opened.
+D3_L2=[66435]Project Closed.
+D3_L3=[68235]Project Opened.
+D3_L4=[68409]Project Closed.
+
+[Opened Files]
+1=ADConv.c
+t1=1
+Count=1
+[ADConv.c]
+Type=4
+
+[defines]
+buildcount=20
+[Units]
+Count=1
+1=ADConv (main)

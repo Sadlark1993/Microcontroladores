@@ -1,0 +1,69 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+021-022 main.timer
+023-024 main.duty
+025-026 main.period
+027     main.@SCRATCH1
+028     main.@SCRATCH2
+029     main.@SCRATCH3
+02A     @delay_us1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_us1
+000013  main
+000013  @cinit1
+00001D  @cinit2
+
+Project Directory:
+    C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\04pwmDelayTriang\
+
+Project Files:
+    pwmDelayTriang.c                                        [01-ago-22 19:39  CRC=A0F608CB]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\Devices\16F877A.h [27-abr-22 08:07  CRC=4E256CC5]
+
+Source signature=3D40E255
+Program memory checksum=0000
+Hex file CRC=B2F1
+
+Units:
+    C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\04pwmDelayTriang\pwmDelayTriang (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
+
+Output Files:
+    XREF file:   pwmDelayTriang.xsym
+    Errors:      pwmDelayTriang.err
+    Ext Symbols: pwmDelayTriang.esym
+    INHX8:       pwmDelayTriang.hex
+    Symbols:     pwmDelayTriang.sym
+    List:        pwmDelayTriang.lst
+    Debug/COFF:  pwmDelayTriang.cof
+    Project:     pwmDelayTriang.ccspjt
+    Call Tree:   pwmDelayTriang.tre
+    Statistics:  pwmDelayTriang.STA

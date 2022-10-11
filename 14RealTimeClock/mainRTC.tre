@@ -1,0 +1,85 @@
+ÀÄmainRTC
+   ÀÄMAIN  0/122  Ram=3
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄlcd_ini  0/61  Ram=2
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_envia_nibble  0/39  Ram=1
+      ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄlcd_envia_nibble  0/39  Ram=1
+      ³  ÃÄ@const627  0/8  Ram=0
+      ³  ÀÄlcd_envia_byte  0/33  Ram=3
+      ³     ÃÄlcd_envia_nibble  0/39  Ram=1
+      ³     ÀÄlcd_envia_nibble  0/39  Ram=1
+      ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄ@PSTRINGC7_643  0/88  Ram=4
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÃÄlcd_envia_byte  0/33  Ram=3
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ³  ÃÄlcd_pos_xy  (Inline)  Ram=4
+      ³  ³  ³  ÀÄlcd_envia_byte  0/33  Ram=3
+      ³  ³  ³     ÀÄ*
+      ³  ³  ÃÄlcd_envia_byte  0/33  Ram=3
+      ³  ³  ³  ÀÄ*
+      ³  ³  ÀÄlcd_envia_byte  0/33  Ram=3
+      ³  ³     ÀÄ*
+      ³  ÀÄlcd_escreve  0/55  Ram=1
+      ³     ÀÄ*
+      ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄIntSqw_Set  0/64  Ram=2
+      ³  ÃÄRTC_Read_Reg  (Inline)  Ram=2
+      ³  ³  ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³  ³  ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³  ³  ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³  ³  ÀÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÀÄRTC_Write_Reg  (Inline)  Ram=2
+      ³     ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³     ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³     ÀÄ@I2C_WRITEU_1  0/16  Ram=1
+      ÃÄRTC_Get  0/94  Ram=0
+      ³  ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_WRITEU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÃÄ@I2C_READU_1  0/16  Ram=1
+      ³  ÃÄbcd_to_decimal  0/53  Ram=3
+      ³  ³  ÀÄ@MUL88  (Inline)  Ram=2
+      ³  ÃÄbcd_to_decimal  0/53  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄbcd_to_decimal  0/53  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄbcd_to_decimal  0/53  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÃÄbcd_to_decimal  0/53  Ram=3
+      ³  ³  ÀÄ*
+      ³  ÀÄbcd_to_decimal  0/53  Ram=3
+      ³     ÀÄ*
+      ÃÄ@PSTRINGCN7_643  0/89  Ram=5
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÀÄlcd_escreve  0/55  Ram=1
+      ³     ÀÄ*
+      ÃÄ@PRINTF_U_643  0/53  Ram=2
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÃÄ@DIV88  0/21  Ram=3
+      ³  ÃÄlcd_escreve  0/55  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÀÄlcd_escreve  0/55  Ram=1
+      ³     ÀÄ*
+      ÃÄlcd_escreve  0/55  Ram=1
+      ³  ÀÄ*
+      ÃÄ@PRINTF_U_643  0/53  Ram=2
+      ³  ÀÄ*
+      ÃÄlcd_escreve  0/55  Ram=1
+      ³  ÀÄ*
+      ÃÄ@PRINTF_U_643  0/53  Ram=2
+      ³  ÀÄ*
+      ÀÄ@delay_ms1  0/20  Ram=1

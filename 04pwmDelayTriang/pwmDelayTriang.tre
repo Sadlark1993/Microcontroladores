@@ -1,0 +1,12 @@
+ÀÄpwmDelayTriang
+   ÀÄmain  0/159  Ram=9
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@cinit2  (Inline)  Ram=0
+      ÃÄ@delay_us1  0/15  Ram=1
+      ÃÄ@delay_us1  0/15  Ram=1
+      ÃÄ@delay_us1  0/15  Ram=1
+      ÃÄ@delay_us1  0/15  Ram=1
+      ÃÄ@delay_us1  0/15  Ram=1
+      ÃÄ@delay_us1  0/15  Ram=1
+      ÃÄ@delay_us1  0/15  Ram=1
+      ÀÄ@delay_us1  0/15  Ram=1

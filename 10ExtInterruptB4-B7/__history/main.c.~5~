@@ -1,0 +1,24 @@
+#include <main.h>
+
+#INT_RB
+void  RB_isr(void) 
+{
+   output_toggle(PIN_D1);
+}
+
+void main()
+{
+   //setting all of B ports to input
+   set_tris_b(0xFF);//its 1 byte. bit 1 means input, bit 0 means output.
+   output_d(0);
+   
+   clear_interrupt(INT_RB);
+   enable_interrupts(INT_RB);
+   enable_interrupts(GLOBAL);
+
+   while(TRUE)
+   {
+      //TODO: User Code
+   }
+
+}

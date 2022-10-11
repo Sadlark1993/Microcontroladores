@@ -1,0 +1,166 @@
+CCS PCM C Compiler, Version 5.015, 5967               16-set-22 00:17
+
+               Filename:   C:\Users\Sadla\OneDrive\Documentos\MEGAsync\doc\Facul\Microcontroladores\Projetos\teste16f876a\main.lst
+
+               ROM used:   103 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   7 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   018
+0003:  NOP
+.................... //#include <main.h> 
+....................  
+.................... #include <16F876A.h> 
+.................... //////////// Standard Header file for the PIC16F876A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F876A 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=10 
+.................... #use delay(crystal=20000000) 
+0004:  MOVLW  22
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+....................  
+.................... #define LED PIN_c4 
+.................... #define LED2 PIN_c1 
+.................... #define DELAY 1000 
+....................  
+.................... void main() 
+0018:  MOVF   03,W
+0019:  ANDLW  1F
+001A:  MOVWF  03
+001B:  MOVLW  FF
+001C:  MOVWF  20
+001D:  BSF    03.5
+001E:  BSF    1F.0
+001F:  BSF    1F.1
+0020:  BSF    1F.2
+0021:  BCF    1F.3
+0022:  MOVLW  07
+0023:  MOVWF  1C
+0024:  BCF    03.7
+.................... { 
+....................    setup_adc_ports(AN0_AN1_AN3); 
+0025:  BCF    1F.0
+0026:  BCF    1F.1
+0027:  BSF    1F.2
+0028:  BCF    1F.3
+....................    setup_adc(ADC_CLOCK_INTERNAL); 
+0029:  BCF    1F.6
+002A:  BCF    03.5
+002B:  BSF    1F.6
+002C:  BSF    1F.7
+002D:  BSF    03.5
+002E:  BSF    1F.7
+002F:  BCF    03.5
+0030:  BSF    1F.0
+....................     
+....................     
+....................  
+....................    while(TRUE) 
+....................    { 
+....................  
+....................       //Example blinking LED program 
+....................       output_low(LED); 
+0031:  BCF    20.4
+0032:  MOVF   20,W
+0033:  BSF    03.5
+0034:  MOVWF  07
+0035:  BCF    03.5
+0036:  BCF    07.4
+....................       delay_ms(DELAY); 
+0037:  MOVLW  04
+0038:  MOVWF  21
+0039:  MOVLW  FA
+003A:  MOVWF  22
+003B:  CALL   004
+003C:  DECFSZ 21,F
+003D:  GOTO   039
+....................       output_high(LED); 
+003E:  BCF    20.4
+003F:  MOVF   20,W
+0040:  BSF    03.5
+0041:  MOVWF  07
+0042:  BCF    03.5
+0043:  BSF    07.4
+....................       delay_ms(DELAY); 
+0044:  MOVLW  04
+0045:  MOVWF  21
+0046:  MOVLW  FA
+0047:  MOVWF  22
+0048:  CALL   004
+0049:  DECFSZ 21,F
+004A:  GOTO   046
+....................       output_low(LED2); 
+004B:  BCF    20.1
+004C:  MOVF   20,W
+004D:  BSF    03.5
+004E:  MOVWF  07
+004F:  BCF    03.5
+0050:  BCF    07.1
+....................       delay_ms(DELAY); 
+0051:  MOVLW  04
+0052:  MOVWF  21
+0053:  MOVLW  FA
+0054:  MOVWF  22
+0055:  CALL   004
+0056:  DECFSZ 21,F
+0057:  GOTO   053
+....................       output_high(LED2); 
+0058:  BCF    20.1
+0059:  MOVF   20,W
+005A:  BSF    03.5
+005B:  MOVWF  07
+005C:  BCF    03.5
+005D:  BSF    07.1
+....................       delay_ms(DELAY); 
+005E:  MOVLW  04
+005F:  MOVWF  21
+0060:  MOVLW  FA
+0061:  MOVWF  22
+0062:  CALL   004
+0063:  DECFSZ 21,F
+0064:  GOTO   060
+0065:  GOTO   031
+....................  
+....................       //TODO: User Code 
+....................    } 
+....................  
+.................... } 
+0066:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
