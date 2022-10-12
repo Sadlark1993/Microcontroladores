@@ -7,4 +7,5 @@
 *.xsym
 *.cof
 *.hex
+*.lst
 __history
