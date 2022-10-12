@@ -1,7 +1,0 @@
->>> Warning 216 "projetoPIC.c" Line 160(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
->>> Warning 202 "projetoPIC.c" Line 95(14,16): Variable never used:   s2
->>> Warning 202 "projetoPIC.c" Line 100(14,16): Variable never used:   s3
->>> Warning 202 "projetoPIC.c" Line 105(14,16): Variable never used:   s4
-      Memory usage:   ROM=16%      RAM=23% - 29%
-      0 Errors,  4 Warnings.
-Build Successful.

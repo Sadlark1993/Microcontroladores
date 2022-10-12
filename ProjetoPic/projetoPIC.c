@@ -65,6 +65,7 @@ C4 PIN_B3
 #include "kbd_ext_board2.c"
 
 unsigned char k;
+unsigned int sol;
 
 #INT_RB
 void  RB_isr(void) 
@@ -120,12 +121,91 @@ void sol1(){
          //printf(lcd_escreve, "\fEntrou C");
          i--;
          k = 255; 
+      }else if(k=='A'){
+         sol = 2;
+         k = 255;
+         f = 0;
       }else k=255;
       delay_ms(150);
       output_toggle(PIN_D1);
-   }
-   
-   
+   } 
+}
+
+void sol2(){
+   unsigned int i = 0;
+   int1 f = 1;
+   while(f){
+      printf(lcd_escreve, "\fSol2 T%u\n%02u:%02u-%02u:%02u",(i+1), s2[i][0], s2[i][1], s2[i][2], s2[i][3]);
+      if(k=='D'&&i<3){
+         //printf(lcd_escreve, "\fEntrou D");
+         i++; 
+         k = 255;
+      }else if(k=='C'&&i>0){
+         //printf(lcd_escreve, "\fEntrou C");
+         i--;
+         k = 255; 
+      }else if(k=='A'){
+         sol = 3;
+         k = 255;
+         f = 0;
+      }else if(k=='B'){
+         sol = 1;
+         k = 255;
+         f = 0;
+      }else k=255;
+      delay_ms(150);
+      output_toggle(PIN_D1);
+   } 
+}
+
+void sol3(){
+   unsigned int i = 0;
+   int1 f = 1;
+   while(f){
+      printf(lcd_escreve, "\fSol3 T%u\n%02u:%02u-%02u:%02u",(i+1), s3[i][0], s3[i][1], s3[i][2], s3[i][3]);
+      if(k=='D'&&i<3){
+         //printf(lcd_escreve, "\fEntrou D");
+         i++; 
+         k = 255;
+      }else if(k=='C'&&i>0){
+         //printf(lcd_escreve, "\fEntrou C");
+         i--;
+         k = 255;
+      }else if(k=='A'){
+         sol = 4;
+         k = 255;
+         f = 0;
+      }else if(k=='B'){
+         sol = 2;
+         k = 255;
+         f = 0;
+      }else k=255;
+      delay_ms(150);
+      output_toggle(PIN_D1);
+   } 
+}
+
+void sol4(){
+   unsigned int i = 0;
+   int1 f = 1;
+   while(f){
+      printf(lcd_escreve, "\fSol4 T%u\n%02u:%02u-%02u:%02u",(i+1), s4[i][0], s4[i][1], s4[i][2], s4[i][3]);
+      if(k=='D'&&i<3){
+         //printf(lcd_escreve, "\fEntrou D");
+         i++; 
+         k = 255;
+      }else if(k=='C'&&i>0){
+         //printf(lcd_escreve, "\fEntrou C");
+         i--;
+         k = 255; 
+      }else if(k=='B'){
+         sol = 3;
+         k = 255;
+         f = 0;
+      }else k=255;
+      delay_ms(150);
+      output_toggle(PIN_D1);
+   } 
 }
 
 void main()
@@ -147,12 +227,23 @@ void main()
    delay_ms(100);
    printf(lcd_escreve, "\fIFMT 2022");
    
-   sol1();
+   sol = 1;
 
    while(TRUE)
    {
-         output_toggle(PIN_D1);
-         delay_ms(1000);
+         if(sol == 1){
+            sol1();
+         }else if(sol == 2){
+            sol2();
+         }else if(sol == 3){
+            sol3();
+         }else if(sol == 4){
+            sol4();
+         }else{
+               printf(lcd_escreve, "\fERRO:\nNo Sol Selected");
+               delay_ms(200);
+         }
+         
    }
 
 }
